@@ -1,4 +1,4 @@
-## Betdice robot
+## EOS Betdice robot
 
 require: cleos, keosd, nodeos
 
