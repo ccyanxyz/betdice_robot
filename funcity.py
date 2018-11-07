@@ -8,13 +8,15 @@ CLEOS = 'cleos --wallet-url http://127.0.0.1:8900 -u http://mainnet.genereos.io 
 def getseed():
     charmap = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
     seed = ''
-    for i in range(18):
+    for i in range(64):
         idx = random.randint(0, len(charmap) - 1)
+        # idx = len(charmap) - 1
         seed += charmap[idx]
     return seed
 
 def create_memo(referal, rollUnder):
-    memo = 'action:bet,seed:' + getseed() + ',rollUnder:' + str(rollUnder) + ',ref:' + referal
+    # memo = 'action:bet,seed:' + getseed() + ',rollUnder:' + str(rollUnder) + ',ref:' + referal
+    memo = str(rollUnder) + '-' + getseed() + '-' + referal
     return memo
 
 def run(cmd):
@@ -47,6 +49,7 @@ def get_cpu(account):
     cmd = CLEOS + "get account " + account + " | grep available | awk 'NR==2 {print $2}'"
     # print(cmd)
     cpu_available = float(run2(cmd))
+    print('cpu: ', cpu_available)
     return cpu_available
 
 def get_ram(account):
@@ -64,7 +67,7 @@ def bet(account, amount, rollUnder, referal, betdice_account):
         memo = create_memo(referal, rollUnder)
         onebet(account, amount, memo)
         print(account, amount, rollUnder)
-        time.sleep(1)
+        time.sleep(3)
 
 def watch_wallet(wallet_name, wallet_password):
     counter = 0
@@ -80,7 +83,7 @@ if __name__ == '__main__':
     account = 'YOUR EOS ACCOUNT'
     # I'll appreciate it if you don't change this
     referal = '11111to55555'
-    betdice_account = 'betdiceadmin'
+    betdice_account = 'funcity1main'
     # 0.95 probility to win
     rollUnder = 96
     # bet 0.1 EOS one time
@@ -88,6 +91,8 @@ if __name__ == '__main__':
 
     # unlock wallet
     unlock_wallet(wallet_name, wallet_password)
+
+    # bet(account, amount, rollUnder, referal, betdice_account)
 
     # multi threading
     threads = []
