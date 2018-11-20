@@ -17,6 +17,3 @@ keosd
 python3 betdice.py (or python3 funcity.py)
 ```
 
-If my code helps:
-reward account: 11111to55555
-
