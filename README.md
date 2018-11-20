@@ -1,9 +1,8 @@
 ## EOS dice game robot
 
-Requirement: cleos, keosd, nodeos
+Requirements: cleos, keosd, nodeos, python3
 
-Fill in these fields with your own wallet info and EOS account:
-
+Replace these fileds with your own wallet and account info:
 ```python
 wallet_name = 'YOUR WALLET NAME'
 wallet_password = 'YOUR WALLET PASSWORD'
@@ -12,8 +11,7 @@ account = 'YOUR EOS ACCOUNT'
 
 Run:
 ```shell
-nodeos
-keosd
-python3 betdice.py (or python3 funcity.py)
+keosd > keosd.log 2>&1 &
+python3 betdice.py
 ```
 
