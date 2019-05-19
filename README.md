@@ -2,7 +2,7 @@
 
 Requirements: cleos, keosd, nodeos, python3
 
-Replace these fileds with your own wallet and account info:
+Replace these fields with your own wallet and account info:
 ```python
 wallet_name = 'YOUR WALLET NAME'
 wallet_password = 'YOUR WALLET PASSWORD'
